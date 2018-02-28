@@ -2,7 +2,6 @@
 
 namespace PhpDruidIngest\Preparer;
 
-use Guzzle\Common\Exception\UnexpectedValueException;
 use PhpDruidIngest\Abstracts\BasePreparer;
 use PhpDruidIngest\Exception\CannotWriteException;
 use PhpDruidIngest\Exception\MalformedFilePathException;

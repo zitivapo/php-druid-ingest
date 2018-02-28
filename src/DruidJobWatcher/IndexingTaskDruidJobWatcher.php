@@ -3,7 +3,7 @@
 namespace PhpDruidIngest\DruidJobWatcher;
 
 use DruidFamiliar\QueryExecutor\DruidNodeDruidQueryExecutor;
-use Guzzle\Http\Exception\ClientErrorResponseException;
+use GuzzleHttp\Exception\ClientException;
 use PhpDruidIngest\QueryGenerator\IndexingTaskStatusQueryGenerator;
 use PhpDruidIngest\QueryGenerator\SimpleIndexQueryGenerator;
 use PhpDruidIngest\QueryParameters\IndexingTaskStatusQueryParameters;
@@ -75,7 +75,7 @@ class IndexingTaskDruidJobWatcher extends BasicDruidJobWatcher
         try {
             $response = $executor->executeQuery($queryGenerator, $queryParameters, $responseHandler);
         }
-        catch ( ClientErrorResponseException $e ) {
+        catch ( ClientException $e ) {
             // 4xx codes
             throw new \Exception('404 encountered. Task id is most likely wrong. Druid connection info could be culprit.');
         }

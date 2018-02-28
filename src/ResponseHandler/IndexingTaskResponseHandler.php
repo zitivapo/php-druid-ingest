@@ -3,7 +3,7 @@
 namespace PhpDruidIngest\ResponseHandler;
 
 use DruidFamiliar\ResponseHandler\DoNothingResponseHandler;
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * Class IndexingTaskResponseHandler returns the task id.
@@ -23,7 +23,7 @@ class IndexingTaskResponseHandler extends DoNothingResponseHandler
      */
     public function handleResponse($response)
     {
-        $response = $response->json();
+        $response = json_decode((string) $response->getBody(), true);
 
         if ( !isset( $response['task'] ) ) {
             throw new \Exception("Unexpected response"); // TODO Replace with subclassed exception

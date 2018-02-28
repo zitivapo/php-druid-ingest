@@ -2,7 +2,7 @@
 
 namespace PhpDruidIngest\QueryResponse;
 
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit_Framework_TestCase;
 
 

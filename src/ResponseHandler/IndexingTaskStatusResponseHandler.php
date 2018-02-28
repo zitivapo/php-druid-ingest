@@ -3,7 +3,7 @@
 namespace PhpDruidIngest\ResponseHandler;
 
 use DruidFamiliar\Interfaces\IDruidQueryResponseHandler;
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\Psr7\Response;
 use PhpDruidIngest\QueryResponse\IndexingTaskStatusQueryResponse;
 
 class IndexingTaskStatusResponseHandler implements IDruidQueryResponseHandler
@@ -22,7 +22,7 @@ class IndexingTaskStatusResponseHandler implements IDruidQueryResponseHandler
     {
         $taskStatus = new IndexingTaskStatusQueryResponse();
 
-        $response = $response->json();
+        $response = json_decode((string) $response->getBody(), true);
 
 
         if ( !isset( $response['status'] ) ) {

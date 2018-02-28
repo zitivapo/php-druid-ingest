@@ -4,7 +4,7 @@ namespace PhpDruidIngest\DruidJobWatcher;
 
 use Closure;
 use DruidFamiliar\QueryExecutor\DruidNodeDruidQueryExecutor;
-use Guzzle\Http\Exception\ClientErrorResponseException;
+use GuzzleHttp\Exception\ClientException;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class CallbackBasedIndexingTaskDruidJobWatcher extends IndexingTaskDruidJobWatcher

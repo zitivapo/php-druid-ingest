@@ -2,7 +2,7 @@
 
 namespace PhpDruidIngest\ResponseHandler;
 
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\Psr7\Response;
 use PhpDruidIngest\QueryResponse\IndexingTaskStatusQueryResponse;
 use PHPUnit_Framework_TestCase;
 

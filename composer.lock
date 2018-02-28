@@ -281,12 +281,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zitivapo/php-druid-query.git",
-                "reference": "efc47c803e8fc034ba2be92f62357b2b3c2110e5"
+                "reference": "0c32889b074f2e9ffdbd66b76d81489de00cde00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zitivapo/php-druid-query/zipball/efc47c803e8fc034ba2be92f62357b2b3c2110e5",
-                "reference": "efc47c803e8fc034ba2be92f62357b2b3c2110e5",
+                "url": "https://api.github.com/repos/zitivapo/php-druid-query/zipball/0c32889b074f2e9ffdbd66b76d81489de00cde00",
+                "reference": "0c32889b074f2e9ffdbd66b76d81489de00cde00",
                 "shasum": ""
             },
             "require": {
@@ -339,7 +339,7 @@
             "support": {
                 "source": "https://github.com/zitivapo/php-druid-query/tree/master"
             },
-            "time": "2018-02-26T16:21:18+00:00"
+            "time": "2018-02-28T15:32:17+00:00"
         },
         {
             "name": "symfony/console",

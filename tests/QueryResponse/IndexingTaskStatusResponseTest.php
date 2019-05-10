@@ -21,10 +21,10 @@ class IndexingTaskStatusQueryResponseTest extends PHPUnit_Framework_TestCase
     public function testSetStatus()
     {
         $a = new IndexingTaskStatusQueryResponse();
-        $a->setStatus('FAILED');
-        $this->assertEquals('FAILED', $a->getStatus());
+        $a->setStatusCode('FAILED');
+        $this->assertEquals('FAILED', $a->getStatusCode());
 
-        $a->setStatus('SUCCESS');
-        $this->assertEquals('SUCCESS', $a->getStatus());
+        $a->setStatusCode('SUCCESS');
+        $this->assertEquals('SUCCESS', $a->getStatusCode());
     }
 }

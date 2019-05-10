@@ -25,7 +25,7 @@ class IndexingTaskStatusResponseHandlerTest extends PHPUnit_Framework_TestCase
 
     public function testHandleResponseReturnsIndexingTaskStatusQueryResponse()
     {
-        $fakeIndexingResponse = new Response(200, array(), '{"status":{"id":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z","status":"FAILED","duration":40},"task":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z"}');
+        $fakeIndexingResponse = new Response(200, array(), '{"status":{"id":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z","statusCode":"FAILED","duration":40},"task":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z"}');
 
         /**
          * @var IndexingTaskStatusQueryResponse $response
@@ -37,7 +37,7 @@ class IndexingTaskStatusResponseHandlerTest extends PHPUnit_Framework_TestCase
 
     public function testHandleResponse()
     {
-        $fakeIndexingResponse = new Response(200, array(), '{"status":{"id":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z","status":"FAILED","duration":40},"task":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z"}');
+        $fakeIndexingResponse = new Response(200, array(), '{"status":{"id":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z","statusCode":"FAILED","duration":40},"task":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z"}');
 
         /**
          * @var IndexingTaskStatusQueryResponse $response
@@ -45,7 +45,7 @@ class IndexingTaskStatusResponseHandlerTest extends PHPUnit_Framework_TestCase
         $response = $this->responseHandler->handleResponse( $fakeIndexingResponse );
 
         $this->assertEquals('index_referral-visit-old-format_2014-09-24T20:53:45.446Z', $response->getId());
-        $this->assertEquals('FAILED', $response->getStatus());
+        $this->assertEquals('FAILED', $response->getStatusCode());
         $this->assertEquals('40', $response->getDuration());
         $this->assertEquals('index_referral-visit-old-format_2014-09-24T20:53:45.446Z', $response->getTask());
     }
@@ -61,12 +61,12 @@ class IndexingTaskStatusResponseHandlerTest extends PHPUnit_Framework_TestCase
          */
         $response = $this->responseHandler->handleResponse( $fakeIndexingResponse );
 
-        $this->assertEquals('index_referral-visit-old-format_2014-09-24T20:53:45.446Z', $response->getStatus());
+        $this->assertEquals('index_referral-visit-old-format_2014-09-24T20:53:45.446Z', $response->getStatusCode());
     }
 
     public function testHandleResponseRequiresDuration()
     {
-        $fakeIndexingResponse = new Response(200, array(), '{"status":{"id":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z","status":"FAILED"},"task":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z"}');
+        $fakeIndexingResponse = new Response(200, array(), '{"status":{"id":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z","statusCode":"FAILED"},"task":"index_referral-visit-old-format_2014-09-24T20:53:45.446Z"}');
 
         $this->setExpectedException('\Exception', 'Unexpected response'); // TODO Upgrade to real exception
 
@@ -75,7 +75,7 @@ class IndexingTaskStatusResponseHandlerTest extends PHPUnit_Framework_TestCase
          */
         $response = $this->responseHandler->handleResponse( $fakeIndexingResponse );
 
-        $this->assertEquals('index_referral-visit-old-format_2014-09-24T20:53:45.446Z', $response->getStatus());
+        $this->assertEquals('index_referral-visit-old-format_2014-09-24T20:53:45.446Z', $response->getStatusCode());
     }
 
 

@@ -10,7 +10,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function getGenericQueryResponse()
     {
         $taskStatus = new IndexingTaskStatusQueryResponse();
-        $taskStatus->setStatus('RUNNING');
+        $taskStatus->setStatusCode('RUNNING');
         $taskStatus->setDuration(1);
         $taskStatus->setId('task.id');
         $taskStatus->setTask('task.id');
@@ -33,7 +33,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testWatchJob()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('FAILED');
+        $taskStatus->setStatusCode('FAILED');
 
         $mockQueryExecutor = $this->getFakeQueryExecutor($taskStatus, 'druid.druid.net', 1234);
 
@@ -63,7 +63,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testTracksWatchAttempts()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('FAILED');
+        $taskStatus->setStatusCode('FAILED');
 
         $mockQueryExecutor = $this->getFakeQueryExecutor($taskStatus);
 
@@ -85,7 +85,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testResetsWatchAttemptsOnSuccess()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('SUCCESS');
+        $taskStatus->setStatusCode('SUCCESS');
 
         $mockQueryExecutor = $this->getFakeQueryExecutor($taskStatus);
 
@@ -106,7 +106,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testResetsWatchAttemptsOnFailure()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('FAILED');
+        $taskStatus->setStatusCode('FAILED');
 
         $mockQueryExecutor = $this->getFakeQueryExecutor($taskStatus);
 
@@ -128,7 +128,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testRetriesIfDruidTaskStatusIsRunning()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('RUNNING');
+        $taskStatus->setStatusCode('RUNNING');
 
         $jobWatcher = $this->getMock(
             'PhpDruidIngest\DruidJobWatcher\IndexingTaskDruidJobWatcher',
@@ -149,7 +149,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testFailsIfRetriesHitsThresholdAndDruidTaskStatusIsRunning()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('RUNNING');
+        $taskStatus->setStatusCode('RUNNING');
 
         $mockQueryExecutor = $this->getFakeQueryExecutor($taskStatus);
 
@@ -175,7 +175,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testFailsIfDruidTaskStatusIsFailed()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('FAILED');
+        $taskStatus->setStatusCode('FAILED');
 
         $jobWatcher = $this->getMock(
             'PhpDruidIngest\DruidJobWatcher\IndexingTaskDruidJobWatcher',
@@ -194,7 +194,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testSucceedsIfDruidTaskStatusIsSuccessful()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('SUCCESS');
+        $taskStatus->setStatusCode('SUCCESS');
 
 
         $jobWatcher = $this->getMock(
@@ -214,7 +214,7 @@ class IndexingTaskDruidJobWatcherTest extends PHPUnit_Framework_TestCase
     public function testWatchJobPassesTaskStatusToHandleTaskStatus()
     {
         $taskStatus = $this->getGenericQueryResponse();
-        $taskStatus->setStatus('RUNNING');
+        $taskStatus->setStatusCode('RUNNING');
 
         $mockQueryExecutor = $this->getFakeQueryExecutor($taskStatus);
 

@@ -5,7 +5,7 @@ namespace PhpDruidIngest\QueryResponse;
 class IndexingTaskStatusQueryResponse
 {
     protected $id;
-    protected $status;
+    protected $statusCode;
     protected $duration;
     protected $task;
 
@@ -28,17 +28,17 @@ class IndexingTaskStatusQueryResponse
     /**
      * @return mixed
      */
-    public function getStatus()
+    public function getStatusCode()
     {
-        return $this->status;
+        return $this->statusCode;
     }
 
     /**
-     * @param mixed $status
+     * @param mixed $statusCode
      */
-    public function setStatus($status)
+    public function setStatusCode($statusCode)
     {
-        $this->status = $status;
+        $this->statusCode = $statusCode;
     }
 
     /**

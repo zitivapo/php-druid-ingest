@@ -41,10 +41,10 @@ class IndexingTaskStatusResponseHandler implements IDruidQueryResponseHandler
         }
         $taskStatus->setId( $responseStatus['id'] );
 
-        if ( !isset( $responseStatus['status'] ) ) {
+        if ( !isset( $responseStatus['statusCode'] ) ) {
             throw new \Exception("Unexpected response"); // TODO Replace with subclassed exception
         }
-        $taskStatus->setStatus( $responseStatus['status'] );
+        $taskStatus->setStatusCode( $responseStatus['statusCode'] );
 
         if ( !isset( $responseStatus['duration'] ) ) {
             throw new \Exception("Unexpected response"); // TODO Replace with subclassed exception

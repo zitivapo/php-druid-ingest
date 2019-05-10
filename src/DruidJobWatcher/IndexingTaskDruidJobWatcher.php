@@ -90,7 +90,7 @@ class IndexingTaskDruidJobWatcher extends BasicDruidJobWatcher
      */
     public function handleTaskStatus(IndexingTaskStatusQueryResponse $response)
     {
-        $taskStatus = $response->getStatus();
+        $taskStatus = $response->getStatusCode();
 
         if ( $taskStatus === 'RUNNING' )
         {

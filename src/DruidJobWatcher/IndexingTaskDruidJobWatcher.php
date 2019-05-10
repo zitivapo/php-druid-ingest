@@ -92,35 +92,26 @@ class IndexingTaskDruidJobWatcher extends BasicDruidJobWatcher
     {
         $taskStatus = $response->getStatusCode();
 
-        if ( $taskStatus === 'RUNNING' )
-        {
-            if ( $this->watchAttempts < $this->maximumWatchAttempts )
-            {
+        if ($taskStatus === 'RUNNING') {
+            if ($this->watchAttempts < $this->maximumWatchAttempts) {
                 $this->onJobPending();
 
                 $jobId = $response->getTask();
                 $this->doWait($this->watchAttemptDelay);
                 return $this->watchJob($jobId);
-            }
-            else
-            {
+            } else {
                 $this->stopWatchingJob();
                 $this->onJobFailed();
                 return false;
             }
-        }
-        else if  ( $taskStatus === 'SUCCESS' )
-        {
+        } else if ($taskStatus === 'SUCCESS') {
             $this->stopWatchingJob();
             $this->onJobCompleted();
             return true;
-        }
-        else if  ( $taskStatus === 'FAILED' )
-        {
+        } else if ($taskStatus === 'FAILED') {
             $this->stopWatchingJob();
             $this->onJobFailed();
             return false;
-
         } else {
             throw new \Exception('Unexpected task status encountered: "' . $taskStatus . '"');
         }

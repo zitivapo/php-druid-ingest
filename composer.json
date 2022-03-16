@@ -19,7 +19,7 @@
     "require": {
         "php": "^8.0.2",
         "psr/log": "~1",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "~7",
         "symfony/console": "~3.1|~4.0|~5.0|~6.0",
         "r4j4h/php-druid-query": "dev-master"
     },
